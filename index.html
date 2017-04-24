@@ -1,0 +1,141 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <style>
+        body{
+            background-color: #333333;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .banner, 
+        .logo, 
+        .animate div {
+            width: 300px;
+            height: 250px;
+        }
+        .banner {
+            position: relative;
+            margin: 0px auto;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .logo {
+            z-index: 4;
+            position: absolute;
+            top: 0px;
+            height: 250px;
+            background: url(assets/images/logo.png) no-repeat;
+        }
+
+        .cta {
+            z-index: 4;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 25px;
+            background: url(assets/images/cta.png) no-repeat;
+        }
+
+        .razor {
+            z-index: 3;
+            position: absolute;
+            top: 0px;
+        }
+        .razor-back {
+            width: 214px;
+            height: 569px;
+            background: url(assets/images/razor.png) 50% no-repeat;
+            background-size: 80%;
+        }
+        .razor-front {
+            z-index: 4;
+            width: 99px;
+            height: 134px;
+            background: url(assets/images/razorEnding) 50% no-repeat;
+        }
+
+        .animate div {
+            position: absolute;
+        }
+        .animate .girl1 {
+            background: url(assets/images/girlTop.png) no-repeat;
+        }
+        .animate .ice1 {
+            background: url(assets/images/iceTop.png) no-repeat;
+        }
+        .animate .girl2 {
+            background: url(assets/images/girlStrip.png) no-repeat;
+        }
+        .animate .ice2 {
+            background: url(assets/images/ice1.png) no-repeat;
+        }
+        .animate .girl3 {
+            background: url(assets/images/girlBottom.png) no-repeat;
+        }
+        .animate .ice3 {
+            background: url(assets/images/ice2.png) no-repeat;
+        }
+        .animate .ice4 {
+            background: url(assets/images/ice3.png) no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner" title="Gillette Venus">
+        <i class="logo"></i>
+        <a class="cta" href="#"></a>
+
+        <div class="animate">
+            <div class="girl1"></div>
+            <div class="ice1"></div>
+        
+            <div class="girl2"></div>
+            <div class="ice2"></div>
+
+            <div class="girl3"></div>
+            <div class="ice3"></div>
+
+            <div class="ice4"></div>
+        </div>
+
+        <div class="razor razor-back"></div>
+        <div class="razor razor-front"></div>
+    </div>
+
+<script>
+    var options = {
+        delay: 3
+    }
+    var tl = new TimelineMax(options);
+    tl
+    // Start
+    .set('.razor-back', {top:'-350px', left: '-200px'})
+    .set('.razor-front', {top:'120px', left: '-120px'})
+    .set('.girl2, .girl1', {css: {'z-index':'2', 'width':'0%'} })
+
+    // Animate 1
+    .to('.razor-back', 1.5, {transformOrigin: '360px 200px', rotation: -160})
+    .to('.girl2', 0.7, { css: {width: '100%'} }, '-=1.1')
+    .set('.razor-back', {css:{top:'-250px', left: '-100px', rotation: 220, scaleY: -1}})
+
+    // Animate 2
+    .to('.razor-back', 1.3, {top: '-290px', left:'-310px', rotation: 330})
+    .to('.ice3', 0.5, { css: {width: '0%'} }, '-=1')
+    .set('.razor-back', {css:{top:'-30px', left: '-750px', rotation: 110}})
+
+    // Animate 3
+    .to('.razor-back', 1.2, {css:{top:'120px', left: '100px', rotation: 90}})
+    .to('.girl1', 0.8, { css: {width: '100%'} }, '-=0.9')
+    .set('.razor-back', {css:{top:'-200px', left: '350px', rotation: 280}})
+
+    // Animate 4
+    .to('.razor-back', 1.6, {css:{top:'-290px', left: '-450px', rotation: 310}})
+    .to('.ice4', 0.4, { css: {width: '0%'} }, '-=1.1')
+
+    // Animate 5
+    .to('.razor-front', 0.5, {top:'120px', left: '4px', ease: Back.easeOut})
+</script>
+</body>
+</html>
